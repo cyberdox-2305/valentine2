@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valentine Proposal ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff9aa2, #ff4d6d, #fff);
+      overflow: hidden;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      color: rgba(255,255,255,0.8);
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      from {transform: translateY(100vh) scale(0.5); opacity:1}
+      to {transform: translateY(-10vh) scale(1.4); opacity:0}
+    }
+
+    .container {
+      text-align: center;
+      background: white;
+      padding: 60px;
+      border-radius: 35px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+      position: relative;
+      animation: fadeIn 1.5s ease;
+      max-width: 520px;
+    }
+
+    @keyframes fadeIn {
+      from {opacity:0; transform:translateY(40px)}
+      to {opacity:1; transform:translateY(0)}
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      color: #ff2e63;
+      font-size: 46px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: #d6336c;
+      margin-bottom: 35px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .buttons {
+      position: relative;
+      height: 120px;
+    }
+
+    button {
+      padding: 16px 34px;
+      font-size: 19px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.25s;
+      position: absolute;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    #yes {
+      background: linear-gradient(45deg,#ff2e63,#ff6b81);
+      color: white;
+      left: 20%;
+    }
+
+    #yes:hover {
+      transform: scale(1.18);
+    }
+
+    #no {
+      background: white;
+      border: 3px solid #ff2e63;
+      color: #ff2e63;
+      left: 55%;
+    }
+
+    #celebration {
+      position: fixed;
+      inset: 0;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: radial-gradient(circle, #fff, #ffd1dc);
+      text-align: center;
+      padding:20px;
+    }
+
+    #celebration h1{
+      font-family: 'Great Vibes', cursive;
+      font-size: 52px;
+      color:#ff2e63;
+      margin:8px 0;
+      animation: pop 0.7s ease;
+    }
+
+    @keyframes pop{
+      from{transform:scale(0)}
+      to{transform:scale(1)}
+    }
+
+    #celebration img {
+      width: 340px;
+      border-radius: 30px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+      margin-top: 25px;
+      animation: zoomIn 1s ease;
+    }
+
+    @keyframes zoomIn {
+      from {transform: scale(0); opacity: 0;}
+      to {transform: scale(1); opacity: 1;}
+    }
+
+    .confetti {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* Ring animation */
+    .ring {
+      font-size:80px;
+      animation: ringPop 1s ease;
+    }
+
+    @keyframes ringPop{
+      from{transform:scale(0) rotate(-180deg)}
+      to{transform:scale(1) rotate(0)}
+    }
+
+  </style>
+</head>
+<body>
+
+<script>
+  // Floating hearts generator
+  for(let i=0;i<30;i++){
+    const heart=document.createElement('div');
+    heart.className='heart';
+    heart.innerHTML='❤️';
+    heart.style.left=Math.random()*100+'vw';
+    heart.style.fontSize=(Math.random()*25+15)+'px';
+    heart.style.animationDuration=(Math.random()*6+4)+'s';
+    document.body.appendChild(heart);
+  }
+</script>
+
+<div class="container" id="proposal">
+  <h1>Happy Valentine's Day ❤️ </h1>
+  <h2>
+    From the moment you entered my life,<br>
+    everything became more beautiful...<br><br>
+    Will you marry me?
+  </h2>
+
+  <div class="buttons">
+    <button id="yes">YES 💍</button>
+    <button id="no">NO 😜</button>
+  </div>
+</div>
+
+<div id="celebration">
+  <div class="ring">💍</div>
+  <h1>She Said YES! 🎉</h1>
+  <img src="photo.jpg" alt="Our Photo" />
+  <h1>You are officially</h1>
+  <h1>Rajul Raj's Valentine ❤️</h1>
+  <h1>Forever & Always</h1>
+</div>
+
+<audio id="music" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-love-11786.mp3"></audio>
+
+<script>
+  const noBtn = document.getElementById('no');
+  const yesBtn = document.getElementById('yes');
+  const celebration = document.getElementById('celebration');
+  const proposal = document.getElementById('proposal');
+  const music = document.getElementById('music');
+
+  const originalLeft = '55%';
+  const originalTop = '0px';
+
+  function dodgeNoButton() {
+    const x = Math.random() * (window.innerWidth - 160);
+    const y = Math.random() * (window.innerHeight - 100);
+
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
+
+    // return back after short delay
+    setTimeout(() => {
+      noBtn.style.left = originalLeft;
+      noBtn.style.top = originalTop;
+    }, 900);
+  }
+
+  noBtn.addEventListener('mouseenter', dodgeNoButton);
+  noBtn.addEventListener('click', dodgeNoButton);
+
+  yesBtn.addEventListener('click', () => {
+    proposal.style.display = 'none';
+    celebration.style.display = 'flex';
+    launchConfetti();
+    music.play();
+  });
+
+  function launchConfetti() {
+    for (let i = 0; i < 250; i++) {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.top = '-10px';
+      confetti.style.background = ['#ff2e63','#ff6b81','#ff4757','#ff85a1','#f72585','#ffffff'][Math.floor(Math.random()*6)];
+      confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      confetti.style.borderRadius = Math.random()>0.5?'50%':'0';
+
+      document.body.appendChild(confetti);
+      setTimeout(() => confetti.remove(), 5000);
+    }
+  }
+</script>
+
+</body>
+</html>
