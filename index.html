@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>This is for you  💍</title>
+  <title>This is for you 💍</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -133,9 +133,47 @@
       justify-content:center;
       align-items:center;
       flex-direction:column;
-      background:radial-gradient(circle,#fff,#ffd6e0);
       text-align:center;
       padding:20px;
+      overflow:hidden;
+      background:radial-gradient(circle,#fff,#ffd6e0);
+    }
+
+    /* 3D CAROUSEL */
+    .carousel3d{
+      position:absolute;
+      inset:0;
+      overflow:hidden;
+      z-index:-1;
+      perspective:1200px;
+    }
+
+    .carousel-track{
+      display:flex;
+      height:120%;
+      width:max-content;
+      animation:diagonalMove 60s linear infinite;
+      transform:rotate(-12deg) rotateY(15deg) scale(1.4);
+    }
+
+    .carousel-track img{
+      width:420px;
+      height:75vh;
+      object-fit:cover;
+      margin:20px;
+      border-radius:25px;
+      opacity:.5;
+      filter:blur(1.5px);
+      box-shadow:0 25px 60px rgba(0,0,0,.45);
+    }
+
+    @keyframes diagonalMove{
+      from{
+        transform:translate(-10%,-10%) rotate(-12deg) rotateY(15deg) scale(1.4);
+      }
+      to{
+        transform:translate(-60%,-60%) rotate(-12deg) rotateY(15deg) scale(1.4);
+      }
     }
 
     .ring{
@@ -153,9 +191,11 @@
       color:#ff2e63;
       font-size:clamp(36px,6vw,64px);
       margin:8px 0;
+      position:relative;
+      z-index:2;
     }
 
-    #celebration img{
+    #celebration img.main-photo{
       width:min(90%,420px);
       max-height:55vh;
       object-fit:cover;
@@ -167,6 +207,8 @@
       box-shadow:0 0 25px rgba(255,46,99,.6),
                  0 30px 60px rgba(0,0,0,.4);
       animation:zoomIn 1s ease, glow 2.5s infinite alternate;
+      position:relative;
+      z-index:2;
     }
 
     @keyframes glow{
@@ -224,9 +266,33 @@
 </div>
 
 <div id="celebration">
+
+  <!-- 3D BACKGROUND CAROUSEL -->
+  <div class="carousel3d">
+    <div class="carousel-track">
+      <img src="image2.jpeg" alt="memory">
+      <img src="image3.jpeg" alt="memory">
+      <img src="image4.jpeg" alt="memory">
+      <img src="image5.jpeg" alt="memory">
+      <img src="image6.jpeg" alt="memory">
+      <img src="image7.jpeg" alt="memory">
+      <img src="image8.jpeg" alt="memory">
+      <img src="image9.jpeg" alt="memory">
+      <img src="image10.jpeg" alt="memory">
+      <img src="image11.jpeg" alt="memory">
+      <img src="image12.jpeg" alt="memory">
+      <img src="image13.jpeg" alt="memory">
+      <img src="image14.jpeg" alt="memory">
+      <img src="image15.jpeg" alt="memory">
+      <img src="image16.jpeg" alt="memory">
+      <img src="image17.jpeg" alt="memory">
+      <img src="image18.jpeg" alt="memory">
+    </div>
+  </div>
+
   <div class="ring">💍</div>
   <h1>Congratulations! 🎉</h1>
-  <img src="image.jpeg" alt="Our Photo" />
+  <img class="main-photo" src="image.jpeg" alt="Our Photo" />
   <h1>You are officially Rajul's Wife forever and always ❤️</h1>
 </div>
 
@@ -300,7 +366,7 @@ function dodge(){
 noBtn.addEventListener('mouseenter',dodge);
 noBtn.addEventListener('click',dodge);
 
-// YES -> INSANE CELEBRATION
+// YES -> CELEBRATION
 const yesBtn=document.getElementById('yes');
 const celebration=document.getElementById('celebration');
 
