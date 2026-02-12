@@ -150,27 +150,36 @@
 
     .carousel-track{
       display:flex;
-      height:120%;
-      width:max-content;
-      animation:diagonalMove 60s linear infinite;
+      height:150%;
+      width:150%;
+      animation:diagonalMove 70s linear infinite;
       transform:rotate(-12deg) rotateY(15deg) scale(1.4);
     }
 
     .carousel-track img{
-      width:420px;
-      height:75vh;
+      width:clamp(140px,28vw,260px);
+      height:clamp(180px,40vh,420px);
       object-fit:cover;
-      margin:20px;
-      border-radius:25px;
+      margin:12px;
+      border-radius:20px;
       opacity:.5;
-      filter:blur(1.5px);
-      box-shadow:0 25px 60px rgba(0,0,0,.45);
+      filter:blur(1.2px);
+      box-shadow:0 18px 40px rgba(0,0,0,.35);
     }
 
     @keyframes diagonalMove{
       from{
-        transform:translate(-10%,-10%) rotate(-12deg) rotateY(15deg) scale(1.4);
+        transform:translate(-60%,-60%) rotate(-12deg) rotateY(15deg) scale(1.4);
       }
+      to{
+        transform:translate(10%,10%) rotate(-12deg) rotateY(15deg) scale(1.4);
+      }
+    }
+      to{
+        transform:translate(40%,40%) rotate(-12deg) rotateY(15deg) scale(1.4);
+        opacity:.9;
+      }
+    }
       to{
         transform:translate(-60%,-60%) rotate(-12deg) rotateY(15deg) scale(1.4);
       }
@@ -267,7 +276,7 @@
 
 <div id="celebration">
 
-  <!-- 3D BACKGROUND CAROUSEL -->
+   <!-- 3D BACKGROUND CAROUSEL -->
   <div class="carousel3d">
     <div class="carousel-track">
       <img src="image2.jpeg" alt="memory">
